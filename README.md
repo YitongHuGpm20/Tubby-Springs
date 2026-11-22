@@ -1,72 +1,69 @@
 # Tubby Springs
 
-A very unbusy business. Build a cut-paper animal hot spring retreat, earn coins from visitors, and let the loafing begin.
+### A very unbusy business.
 
-## Run
+A cozy animal resort management game about building a happy little retreat—and keeping it pleasantly unbusy.
 
-Requires Node.js 22.12 or later.
+Welcome capybaras, Shiba Inus, raccoons, and penguins to a countryside getaway filled with warm baths, tasty snacks, comfy cabins, and blooming gardens. Start small, find your rhythm, and grow a place worth slowing down for.
 
-```sh
-npm install
-npm run dev
-npm test
-npm run build
-npm run verify:career # accelerated validation of 20 simulation hours
-```
+![Tubby Springs promotional cover: four animal guests relaxing at a paper-collage hot spring resort](releases/tubby-springs-cover-v1.png)
 
-## Play
+**Browser game · Playable demo · Single player**
 
-Guests arrive automatically and pay 8 coins at entry. Each guest chooses activities based on hunger, tiredness, comfort, personal preference, cleanliness and crowding. They queue when a facility is full, spend coins on services, then leave a review and occasionally a tip. No direct movement commands are needed.
+[Download the browser build](releases/tubby-springs-0.3.0-itch-web.zip) · [Credits & asset sources](CREDITS.md)
 
-Choose a facility in the bottom dock, then click clear ground to build it. Drag to pan; scroll or use +/− to zoom. Fit returns to the whole retreat. Escape cancels construction and closes details. The guest and facility lists provide keyboard-accessible selection.
+The downloadable ZIP is a web-hosting package. To run the game locally, see the [developer guide](docs/development.md#run).
 
-- Hot spring: 120 coins to build, 16 per service, 3 guests, 3 coins of supplies per minute.
-- Snack shack: 90 to build, 12 per service, 2 guests, 2 coins of supplies per minute.
-- Cozy cabin: 160 to build, 24 per service, 2 guests, 4 coins of supplies per minute. Increases resort capacity.
-- Wild garden: 55 to build, free to enjoy, 4 guests, no maintenance. Grows over time and faster in rain.
+## Your little retreat
 
-The Cashbook lets you choose Friendly, Fair or Premium pricing. Friendly prices lower entry and service fees but attract visitors faster and improve initial happiness. Premium prices do the reverse. Gardens remain free.
+Build hot springs, snack shacks, cozy cabins, and wild gardens across nine meadows. Your guests explore on their own, choosing activities according to their needs, preferences, distance, crowds, and cleanliness.
 
-Click a facility to freshen it for 8 coins or upgrade it. Upgrades increase capacity and paid service prices. Poor cleanliness lowers visitor happiness. Happy departures build reputation; gardens and reputation attract new animal types. A 35-coin towel party boosts guest happiness and reputation.
+Your job is to make their holiday work: balance service capacity, prices, upkeep, and visitor happiness, then turn happy reviews into the next improvement. Gardens grow over time, rain gives them a boost, and rotating guest clubs bring fresh demand to the resort.
 
-The 4200 × 2850 map starts with the original retreat in its **central** meadow, with a spring, a cafe, a garden and 300 coins plus the first guests' entry fees. Supply bills occur every 60 simulation seconds. A displayed day lasts 180 simulation seconds. Pause and 1×/2×/4× apply to simulation and character animation together. Tab hiding pauses the game.
+- **Four charming animal guests.** Meet a professional relaxation consultant, a chair-claiming Shiba, a suspiciously well-equipped raccoon, and a penguin with opinions about water temperature.
+- **A business at your pace.** Set prices, upgrade facilities, hire caretakers, and research permanent improvements. Pause whenever you like or speed things up.
+- **Room to make it yours.** Expand outward from the central meadow and specialise districts around your favourite services.
+- **Always a little to do.** Follow eight career chapters, complete continually refreshed commissions, and collect 29 achievements.
+- **A handmade holiday.** Pastel paper landscapes, cutout animal animations, and tucked-away interface panels keep the retreat in focus.
 
-Five introductory milestones live under **Getting started**. The **To-do** board contains three ongoing commissions, immediately replaced when claimed. Eight career chapters unlock through service XP and completed commissions. Research stamps earned from tasks and 29 achievements buy permanent improvements, caretaker automation and facility levels 4–5. Seasonal guest clubs rotate every 15 simulation minutes, affecting demand and service fees. Nine meadow districts can be themed and upgraded to improve matching facilities. See [the progression design](docs/progression-design.md) and [the long-run balance report](docs/career-balance-report.json). The guestbook records little stories and reviews. Cashbook entries show money sources and expenses.
+## How to play
 
-## Saving
+Choose a facility from the bottom menu, then click clear ground to build. Select an existing facility to clean or upgrade it. Guests discover available services automatically.
 
-Save schema v2 migrates the original layout into the central meadow without changing currency or completed milestones. The browser storage key stays the same. The complete resort saves automatically every five seconds and on tab exit to `tubby-springs-resort-v1` in browser storage. Corrupt or unavailable storage falls back safely; the Guestbook indicates whether saving works. Starting fresh requires confirmation and affects only this game's save.
+| Control | Action |
+| --- | --- |
+| Drag | Move around the resort |
+| Scroll or + / − | Zoom in and out |
+| Fit | View the whole map |
+| Escape | Cancel construction or close details |
+| Pause / 1× / 2× / 4× | Set the pace |
 
-## Art and animation
+Open **Getting started** for the introduction and **To-do** for ongoing commissions. The **Cashbook** tracks your business; the **Guestbook** records visitor stories and reviews.
 
-The four characters are generated with DreamLayer: capybara, Shiba Inu, raccoon and penguin. Original generation bundles, previews and atlas metadata are retained in `assets-source/dreamlayer/`. Runtime sheets and portraits live in `public/art/`. The scene, buildings, icons and paper interface are original vector/code art. Source atlases retain exported frame durations; simulation time drives playback. Alpha bounds are measured to normalize display scale and ground anchors without modifying the artwork.
+Progress saves automatically in your browser. Return using the same browser and site to continue; clearing site data removes the local save.
 
-Developer API credentials belong in `.env.local` as `DREAMLAYER_API_KEY`, without a `VITE_` prefix. This file is ignored and never imported into the frontend. Read-only checks:
+## About the project
 
-```sh
-node scripts/dreamlayer.mjs capabilities
-node scripts/dreamlayer.mjs balance
-```
+**Created by Yitong Hu · Game design, systems design, visual direction, and development with AI-assisted workflows.**
 
-Paid generation must specify the intended reference/action and `--max-credits` for sprites. The runner journals request IDs in ignored `.dreamlayer-jobs/`. After a connection interruption inspect the existing execution and download it; do not create a replacement request. New ZIPs placed in `public/art/` can be imported without changing artwork:
+Tubby Springs explores how a relaxed atmosphere can coexist with meaningful management decisions. The player shapes the environment while autonomous visitors bring it to life. Capacity, travel distance, cleanliness, and pricing connect the layout of a cute little resort to its economic performance.
 
-```sh
-python3 scripts/import-sprites.py
-python3 -m pip install -r scripts/requirements.txt
-python3 scripts/measure-sprites.py
-```
+The progression combines short, repeatable commissions with longer chapter goals, research, and district specialisation. Caretaker automation gives players another way to manage maintenance as the park grows. The interface gives the world most of the screen, with detailed management tools available when needed.
 
-## Architecture
+The current demo contains four animal species and four base facility types. Later progression develops those foundations through upgrades, research, and themed districts. Long-term pacing has been checked through an accelerated 20-hour simulation; player testing is still needed to assess the experience and actual playtime.
 
-- `src/simulation/progression.ts`: career chapters, ongoing commission templates, research, themed meadows and achievement definitions.
-- `src/simulation/resort.ts`: visitors, service admission, money, maintenance, weather, growth, reviews and save validation.
-- `src/game/ResortScene.ts`: Phaser landscape, DreamLayer sprite playback, camera, selection and construction preview.
-- `src/game/art.ts`: original facility, tree, sign and UI illustrations.
-- `src/main.ts`: layout, business panels, controls, guide and persistence.
-- `src/style.css`: responsive paper collage interface.
+**Built with:** Phaser, TypeScript, and Vite. The simulation is separated from rendering and interface code, with tests covering the economy, progression, and save continuity.
 
-Tests cover placement and spending, autonomous service capacity, economic flow, natural growth, pause, deterministic save continuation, invalid saves and duplicate service charges.
+For a closer look: [progression design](docs/progression-design.md) · [simulation balance report](docs/career-balance-report.json) · [developer guide](docs/development.md).
 
-## itch.io release
+## Credits
 
-Run `npm run build:itch` to create `releases/tubby-springs-0.3.0-itch-web.zip`. Upload it as an HTML Game for browser play. The ZIP has `index.html` at its root and all runtime assets use relative paths. See [upload settings](docs/itch-upload.md).
+- **Game design and development:** Yitong Hu, with coding assistance from OpenAI Codex.
+- **Character designs and animation:** Generated with DreamLayer. All four animal references, twelve animation sheets, and derived portraits are documented in the asset register.
+- **Scenery, facilities, icons, and interface:** Project-specific SVG, Phaser graphics, and CSS created with Codex assistance.
+- **Promotional cover:** Generated with OpenAI ImageGen using the existing game characters and a gameplay screenshot as references.
+- **Visual inspiration:** [Vincent Wei’s Collage / Cutout Animation reference](https://vincentwei1021.github.io/mg-styles-15/).
+- **Fonts:** Fraunces by The Fraunces Project Authors and Patrick Hand by Patrick Wagesreiter, both under SIL OFL 1.1.
+- **Sound:** Interface chimes synthesised with the Web Audio API.
+
+See [CREDITS.md](CREDITS.md) for individual asset sources, generation records, and font licenses.
