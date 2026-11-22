@@ -10,7 +10,7 @@ Welcome capybaras, Shiba Inus, raccoons, and penguins to a countryside getaway f
 
 **Browser game · Playable demo · Single player**
 
-[**Play in your browser on itch.io**](https://bugondesk.itch.io/tubby-spring) · [Download the browser build](releases/tubby-springs-0.3.0-itch-web.zip) · [Credits & asset sources](CREDITS.md)
+[**Play in your browser on itch.io**](https://bugondesk.itch.io/tubby-springs) · [Download the browser build](releases/tubby-springs-0.3.0-itch-web.zip) · [Credits & asset sources](CREDITS.md)
 
 The downloadable ZIP is a web-hosting package. To run the game locally, see the [developer guide](docs/development.md#run).
 
